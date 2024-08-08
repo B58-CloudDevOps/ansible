@@ -113,4 +113,4 @@ Another way of representing list:
 
 ### IMP Points 
 1) One play cannot have 2 tasks with the same name
-
+2) If you attempt to use a variable that's not declared, that particular task accessing the variable will be a failure.
