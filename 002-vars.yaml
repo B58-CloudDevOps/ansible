@@ -13,4 +13,9 @@
         msg: "value of url is {{URL}}" 
       vars:                                 # task-level variables, this can be accessed by this particular task
         URL: task.google.com
+
+    - name: Pritning CLIURL 
+      ansible.builtin.debug:
+        msg: "value of cliurl is {{CLIURL}}"
       
+### task level variables will have higher precendence thatn play-level variables 
