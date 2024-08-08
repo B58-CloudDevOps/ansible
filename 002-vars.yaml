@@ -10,4 +10,7 @@
 
     - name: Pritning variable from task2
       ansible.builtin.debug:
-        msg: "value of url is {{URL}}"
+        msg: "value of url is {{URL}}" 
+      vars:                                 # task-level variables, this can be accessed by this particular task
+        URL: task.google.com
+      
