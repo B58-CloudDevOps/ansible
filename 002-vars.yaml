@@ -7,3 +7,7 @@
     - name: Pritning variable 
       ansible.builtin.debug:
         msg: "value of url is {{URL}}"
+
+    - name: Pritning variable from task2
+      ansible.builtin.debug:
+        msg: "value of url is {{URL}}"
