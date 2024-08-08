@@ -1,0 +1,9 @@
+# In ansible, if you try to access /print a variable that's not delcared, ansible is going to throw an error
+- name: Demo vars 
+  hosts: all 
+  vars:                                     # Play-level variables, this can be accessed by all the task of a play 
+    URL: play.google.com         
+  tasks:
+    - name: Pritning variable 
+      ansible.builtin.debug:
+        msg: "value of url is {{URL}}"
