@@ -86,6 +86,7 @@ YAML : kubernets, helmCharts, argoCD, GitHubActions
     2) A play is nothing but a list of tasks.
     3) A task is nothing but a list of actions.
 
+
 ## YAML Basics   
     1) Dictionary    ( A key with a value or a keyVale pair is referred as dictionary )
     2) List 
@@ -108,3 +109,8 @@ Another way of representing list:
     ```
         fruits: ['Apple', 'Orange', 'Strawberry', 'Mango']
     ```
+
+
+### IMP Points 
+1) One play cannot have 2 tasks with the same name
+
