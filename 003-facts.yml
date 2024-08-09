@@ -1,0 +1,6 @@
+- name: Demo on facts 
+  hosts: all 
+  tasks:
+    - name: Pritning a fact  
+      ansible.builtin.debug:
+        msg: "CPU Architectire is {{ansible_architecture}}"
