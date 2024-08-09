@@ -1,5 +1,6 @@
 - name: Demo on tashs
   hosts: all 
+  gather_facts: false
   tasks:
     - name: Installing frontend
       ansible.builtin.debug:
