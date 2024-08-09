@@ -3,5 +3,6 @@
   gather_facts: false                # By default, this value is true
   tasks:
     - name: Pritning a fact  
-      ansible.builtin.shell: uptime
+      ansible.builtin.shell: uptime 
+      register: OUT
         
