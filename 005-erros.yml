@@ -1,6 +1,6 @@
 - name: Demo on errors
   hosts: all 
-  gather_facts: yes
+  gather_facts: false
   tasks:
     - name: Check if java process is running or not
       ansible.builtin.shell: ps -ef |grep java |grep -v grep 
