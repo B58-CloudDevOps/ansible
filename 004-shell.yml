@@ -8,4 +8,4 @@
 
     - name: Pritning output
       ansible.builtin.debug:
-        msg: "{{OUT}}"
+        msg: "{{OUT.stdout}}"
