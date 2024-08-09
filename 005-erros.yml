@@ -8,4 +8,4 @@
       
     - name: Printing a msg 
       ansible.builtin.debug:
-        msg: "This is a second task"
+        msg: "This is a second task" 
