@@ -114,3 +114,11 @@ Another way of representing list:
 ### IMP Points 
 1) One play cannot have 2 tasks with the same name
 2) If you attempt to use a variable that's not declared, that particular task accessing the variable will be a failure.
+
+
+
+### Gathering facts:
+
+```
+    ansible -i inv frontend  -e ansible_user=ec2-user -e ansible_password=DevOps321 -m ansible.builtin.gather_facts
+```
