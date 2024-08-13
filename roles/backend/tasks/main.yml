@@ -70,6 +70,11 @@
     login_password: ExpenseApp@1
     login_host: mysql.expense.internal
 
+- name: Copying Systemd file 
+  ansible.builtin.copy:
+    src: systemd.service
+    dest: /etc/systemd/system/{{COMPONENT}}.service
+
 - name: Restarting {{COMPONENT}}
   ansible.builtin.systemd_service:
     name: "{{COMPONENT}}" 
