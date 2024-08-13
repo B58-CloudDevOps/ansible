@@ -12,7 +12,7 @@
     name: mysql-server
     state: present 
 
-- name: Restarting {{COMPONENT}}
+- name: Starting {{COMPONENT}}
   ansible.builtin.systemd_service:
     name: mysqld 
     state: started

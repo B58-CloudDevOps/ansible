@@ -21,7 +21,7 @@
     path: "{{APP_PATH}}"
     state: directory
 
-- name: Downloading {{COMPONENT}}
+- name: Download & Extracting {{COMPONENT}}
   ansible.builtin.unarchive:
     src: https://expense-web-app.s3.amazonaws.com/{{COMPONENT}}.zip
     dest: "{{APP_PATH}}"
