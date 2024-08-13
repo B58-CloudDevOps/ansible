@@ -1,3 +1,5 @@
 [frontend]
-172.31.38.16
+frontend.expense.internal
 
+[mysql]
+mysql.expense.internal
