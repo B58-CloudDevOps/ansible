@@ -58,7 +58,9 @@
 
 - name: Install MySQL Client 
   ansible.builtin.package:
-    name: mysql
+    name: 
+      - mysql
+      - python3-PyMySQL                        # This is a pre-req package for community.mysql.mysql_db to work
     state: present 
 
 - name: Injecting schema 
