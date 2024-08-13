@@ -61,6 +61,7 @@
     name: 
       - mysql
       - python3-PyMySQL                        # This is a pre-req package for community.mysql.mysql_db to work
+      - MySQL-python
     state: present 
 
 - name: Injecting schema 
