@@ -57,11 +57,10 @@
     path: "{{APP_PATH}}"
 
 - name: Install MySQL Client 
-  ansible.builtin.package:
+  ansible.builtin.dnf:
     name: 
       - mysql
       - python3-PyMySQL                        # This is a pre-req package for community.mysql.mysql_db to work
-      - PyMySQL
     state: present 
 
 - name: Injecting schema 
