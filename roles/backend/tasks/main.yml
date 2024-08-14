@@ -56,26 +56,21 @@
   community.general.npm:
     path: "{{APP_PATH}}"
 
-- name: Install MySQL Client 
+- name: Install MySQL Client & MySQL Python Module
   ansible.builtin.dnf:
-    name: 
+    name:
       - mysql
-      # - python3-PyMySQL                        # This is a pre-req package for community.mysql.mysql_db to work
-    state: present 
+      - python3-PyMySQL
+    state: present
 
-- name: Installing pymysql as a pre-req of mysql_info module
-  ansible.builtin.pip:
-    name: pymysql
-    executable: pip3.11
-
-- name: Injecting schema 
+- name: Load Schema
   community.mysql.mysql_db:
     state: import
-    name: all 
+    name: all
     target: /app/schema/backend.sql
-    login_user: root 
-    login_password: "{{PWD}}"
-    login_host: 172.31.40.185
+    login_user: root
+    login_password: ExpenseApp@1
+    login_host: mysql.expense.internal
 
 - name: Copying Systemd file 
   ansible.builtin.copy:
