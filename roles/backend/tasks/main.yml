@@ -63,7 +63,7 @@
       - python3-PyMySQL                        # This is a pre-req package for community.mysql.mysql_db to work
     state: present 
 
-- name: Installing pymysql as a pre-req for mysql_db
+- name: Installing pymysql as a pre-req of mysql_info module
   ansible.builtin.pip:
     name: pymysql
     executable: pip3.11
