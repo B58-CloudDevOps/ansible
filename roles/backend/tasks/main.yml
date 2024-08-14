@@ -23,7 +23,7 @@
 - name: Disabling Nodejs                                    # For disabling and enabling nodejs, we didn't find the relevant ansible module
   ansible.builtin.shell: dnf module disable nodejs -y 
 
-- name: Disabling Nodejs                                    # For disabling and enabling nodejs, we didn't find the relevant ansible module
+- name: Enabling Nodejs                                    # For disabling and enabling nodejs, we didn't find the relevant ansible module
   ansible.builtin.shell: dnf module enable nodejs:20 -y 
 
 - name: Installing nodejs 
