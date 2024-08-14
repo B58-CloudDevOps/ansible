@@ -56,12 +56,20 @@
   community.general.npm:
     path: "{{APP_PATH}}"
 
+
+- name: Installing cryptography
+  ansible.builtin.pip:
+    name: cryptography
+    executable: pip3
+
+
 - name: Install MySQL Client & MySQL Python Module
   ansible.builtin.dnf:
     name:
       - mysql
       - python3-PyMySQL
     state: present
+
 
 - name: Load Schema
   community.mysql.mysql_db:
