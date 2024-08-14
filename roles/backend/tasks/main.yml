@@ -78,7 +78,7 @@
     target: /app/schema/backend.sql
     login_user: root
     login_password: ExpenseApp@1
-    login_host: mysql.expense.internal
+    login_host: 172.31.40.185
 
 - name: Copying Systemd file 
   ansible.builtin.copy:
