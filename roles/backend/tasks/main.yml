@@ -57,17 +57,18 @@
     path: "{{APP_PATH}}"
 
 
-- name: Installing cryptography
+- name: Install Python MySQL Client
   ansible.builtin.pip:
-    name: cryptography
-    executable: pip3
+    name:
+      - PyMySQL
+      - cryptography
+    executable: pip3.9
 
 
 - name: Install MySQL Client & MySQL Python Module
   ansible.builtin.dnf:
     name:
       - mysql
-      - python3-PyMySQL
     state: present
 
 
