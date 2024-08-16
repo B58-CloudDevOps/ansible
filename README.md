@@ -159,3 +159,9 @@ A fact is nothing but a system property that would gathered  by ansible during e
 copy vs template module
 1) Copy just copy - paste from local to remove machine ( You cannot parameterize the files )
 2) If you template collection, you can use it for both copy - paste, along with parameterized files 
+
+
+
+# IMP Regarding Roles and their calling 
+1) When you call a specific role, tasks mentioned in the main.yml will be executed.
+2) We can also define tasks in another file tasks/anything.yml and can imports the tasks that are available in anything.yml
