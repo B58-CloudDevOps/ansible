@@ -154,3 +154,8 @@ A fact is nothing but a system property that would gathered  by ansible during e
                 main.yml      #  <-- role dependencies
 
 ```
+
+
+copy vs template module
+1) Copy just copy - paste from local to remove machine ( You cannot parameterize the files )
+2) If you template collection, you can use it for both copy - paste, along with parameterized files 

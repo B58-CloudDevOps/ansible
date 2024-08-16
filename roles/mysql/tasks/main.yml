@@ -1,11 +1,5 @@
-# dnf install mysql-server -y
-# systemctl enable mysqld 
-# systemctl start  mysqld           
-# 
-# echo "** Mysql Installation Completed **"
-
 - name: Configuring hostname 
-  ansible.builtin.shell: set-hostname "{{COMPONENT}}"
+  ansible.builtin.shell: set-hostname "{{COMPONENT}}-{{ENV}}"
 
 - name: Install {{COMPONENT}}
   ansible.builtin.package:
