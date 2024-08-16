@@ -1,6 +1,3 @@
-- name: Configuring hostname 
-  ansible.builtin.shell: set-hostname "{{COMPONENT}}-{{ENV}}"
-
 - name: Disabling Nodejs                                    # For disabling and enabling nodejs, we didn't find the relevant ansible module
   ansible.builtin.shell: dnf module disable nodejs -y 
 

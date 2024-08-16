@@ -165,3 +165,11 @@ copy vs template module
 # IMP Regarding Roles and their calling 
 1) When you call a specific role, tasks mentioned in the main.yml will be executed.
 2) We can also define tasks in another file tasks/anything.yml and can imports the tasks that are available in anything.yml
+
+### What is Role Dependency In Ansible ?
+
+1) This helps in making one particular task as pre-requisite. 
+
+For example, running backend first without making mysql operation doesn't work.
+
+So, we can define role dependency for BACKEND as MySQL, that means, whenever you wish to run backend, mysql will be execute.
