@@ -173,3 +173,13 @@ copy vs template module
 For example, running backend first without making mysql operation doesn't work.
 
 So, we can define role dependency for BACKEND as MySQL, that means, whenever you wish to run backend, mysql will be execute.
+
+
+### Running Playbook using push mechanism :
+
+```
+    ansible-playbook -i inv-dev -e ansible_user=ec2-user -e ansible_password=DevOps321 -e COMPONENT=frontend -e ENV=dev   expense.yml
+
+    ansible-playbook -i frontend.expense.internal,  -e ansible_user=ec2-user -e ansible_password=DevOps321 -e COMPONENT=frontend -e ENV=dev   expense.yml
+
+```
