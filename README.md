@@ -183,3 +183,14 @@ So, we can define role dependency for BACKEND as MySQL, that means, whenever you
     ansible-playbook -i frontend-dev.expense.internal,  -e ansible_user=ec2-user -e ansible_password=DevOps321 -e COMPONENT=frontend -e ENV=dev   expense.yml
 
 ```
+
+
+### Ansible-Pull 
+
+Ansible also works using pull based mechanism, in this case we don't have to maintain the inventory. But ensure the node that runs this ansible-pull should have ansible installed ?
+
+### When to use push vs pull ?
+
+Typically it's a choice. But generally if the inventory is STATIC, then we designate one of the node as Ansible Controller where we make the deployments from here using push. If the inventory is dynamic ( where infra scales up and down dynamically ) in that case we endup using ansible-pull, but the pre-requisite is that the node running ansible-pull should have ansible installed.
+
+And for that, we maintain AMI's as per the application and will ensure we bake "ansible" in to it. So that we don't have install again and again.
