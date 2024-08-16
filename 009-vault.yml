@@ -1,0 +1,8 @@
+- name: Demo on vault 
+  hosts: localhost 
+  vars:
+    PASS: bac@2543 
+  tasks:  
+    - name: Demo on secret management 
+      ansible.builtin.debug:  
+        msg: Password is {{PASS}}
