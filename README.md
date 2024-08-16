@@ -180,6 +180,6 @@ So, we can define role dependency for BACKEND as MySQL, that means, whenever you
 ```
     ansible-playbook -i inv-dev -e ansible_user=ec2-user -e ansible_password=DevOps321 -e COMPONENT=frontend -e ENV=dev   expense.yml
 
-    ansible-playbook -i frontend.expense.internal,  -e ansible_user=ec2-user -e ansible_password=DevOps321 -e COMPONENT=frontend -e ENV=dev   expense.yml
+    ansible-playbook -i frontend-dev.expense.internal,  -e ansible_user=ec2-user -e ansible_password=DevOps321 -e COMPONENT=frontend -e ENV=dev   expense.yml
 
 ```
