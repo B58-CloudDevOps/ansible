@@ -17,7 +17,7 @@
     state: absent
 
 - name: Creating App Directory 
-  ansible.builtin.template:
+  ansible.builtin.file:
     path: "{{APP_PATH}}"
     state: directory
 
