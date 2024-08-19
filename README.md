@@ -194,3 +194,11 @@ Ansible also works using pull based mechanism, in this case we don't have to mai
 Typically it's a choice. But generally if the inventory is STATIC, then we designate one of the node as Ansible Controller where we make the deployments from here using push. If the inventory is dynamic ( where infra scales up and down dynamically ) in that case we endup using ansible-pull, but the pre-requisite is that the node running ansible-pull should have ansible installed.
 
 And for that, we maintain AMI's as per the application and will ensure we bake "ansible" in to it. So that we don't have install again and again.
+
+
+Ansible Vault is to encrypt the sensitive strings so that the code will be out of secrets that are plain text.
+If we use ansible vault, only ansible secrets can be encrypted and decrypted.
+
+But typically, we need to use a tool, that fits with all the technologies.
+
+> Vault is pending.
