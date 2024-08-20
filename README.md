@@ -201,4 +201,59 @@ If we use ansible vault, only ansible secrets can be encrypted and decrypted.
 
 But typically, we need to use a tool, that fits with all the technologies.
 
-> Vault is pending.
+# ansible-vault
+
+Vault helps you in encrypting the string and supplying in a format that's not plain text.
+
+So, how can I encrypt a string? 
+
+```
+    $ ansible-vault encrypt_string abc@123    ( This gives the encrypted string, ensure you supply the password and you would use the same for decryption as well ) 
+
+    Now enclose this encrypte string in the playbook.
+
+    Now to run this playbook that has encrypted string, you need to supply the password for the encrypted string using the --ask-vault-password 
+
+    $ ansible-playbook --ask-vault-password playbook.yml    ( Enter the encrypted password in the prompt ) 
+
+    If you lose the password for this , we can decrypt this forever.
+
+ ``
+ 
+ For all our jobs in Ansible, there is no UI so far. You can use Ansible Tower for UI, but tower can be useful only for ANSIBLE.
+
+    
+Available Tools for deployments!!!!
+
+    1) Jenkins  ( Jenkins is not really meant for the purpose of deployments, it's main goal is CI )
+    2) GoCD     ( This is a contrinuous deployment tool )
+    3) ArgoCD   ( This is exclusively for Kubernetes deployments and don't work for server based deployments )
+
+###  CI vs CD vs cd ?  
+
+    CI: Continuous Integration 
+    CD: Continuous Deployments vs Continuous Delivery 
+
+
+GoCD Server requirements: 
+    1) t3.small 
+    2) 30gb disk 
+
+GoCD Terminology :
+    1) Material:  Repository
+
+Imp Scenario :
+    1) Though your server has enough disk space, applicaitons are still experiencing low disk issue.
+    2) Check the directory where the applicaiton is running
+    3) Make a df against that and see the disk storage allocated
+    4) lsblk to show the list of block devices and the associated partitions.
+
+If you experience disk space issue post gocd installation, follow the instructions as a root user.
+
+    1) Make sure size of the disk is 30gb, if not expand and restart
+    2) Run the following commands, this will increate the partition
+        # growpart /dev/nvme0n1 4
+    3) Now extend the volume of home to 6G from 960M   
+        # lvextend -r -L +6G /dev/mapper/RootVG-homeVol
+
+    
