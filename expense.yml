@@ -1,6 +1,5 @@
   - name: Configuging Expense App 
     become: true  
-    # hosts: "{{COMPONENT}}"
-    hosts: all
+    hosts: "{{COMPONENT}}"
     roles:
       - role: "{{COMPONENT}}"
