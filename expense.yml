@@ -1,5 +1,8 @@
-- name: Configuging Expense App 
-  hosts: all
-  become: true
-  roles:
-    - "{{ COMPONENT }}"
+  - name: Configuging Expense App 
+    become: true  
+    # hosts: "{{COMPONENT}}"
+    hosts: all
+    roles:
+      - role: "{{COMPONENT}}"
+
+      
