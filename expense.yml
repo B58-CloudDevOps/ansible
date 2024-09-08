@@ -1,6 +1,14 @@
+  # - name: C
+  #   become: true  
+  #   # hosts: "{{COMPONENT}}"
+  #   hosts: all
+  #   roles:
+  #     - role: "{{COMPONENT}}"
+
+  # --- 
+
   - name: Configuging Expense App 
-    become: true  
-    # hosts: "{{COMPONENT}}"
     hosts: all
+    become: true
     roles:
-      - role: "{{COMPONENT}}"
+      - "{{ COMPONENT }}"
