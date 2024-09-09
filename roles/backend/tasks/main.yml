@@ -40,8 +40,8 @@
     state: import
     name: all
     target: /app/schema/backend.sql
-    login_user: root
-    login_password: "{{PWD}}"
+    login_user: "{{secrets.MYSQL_USER}}"
+    login_password: "{{secrets.MYSQL_PASS}}"         # ensure secrets variable is supplied
     login_host: "mysql-{{ENV}}.expense.internal"
 
 - name: Copying Systemd file 
