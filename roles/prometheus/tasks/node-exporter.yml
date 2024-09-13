@@ -1,0 +1,23 @@
+- name: Creating {{app_user}}
+  ansible.builtin.user:
+    name: "{{app_user}}"
+
+- name: Downloading and extracting the package
+  ansible.builtin.unarchive:
+    src: https://github.com/prometheus/node_exporter/releases/download/v1.8.2/node_exporter-1.8.2.linux-amd64.tar.gz
+    dest: /opt
+    remote_src: yes
+    owner: "{{app_user}}" 
+    group: "{{app_user}}" 
+
+- name: Copying Systemd file 
+  ansible.builtin.template:
+    src: node-exporter.service
+    dest: /etc/systemd/system/node-exporter.service
+
+- name: Restarting {{app_user}} serivce 
+  ansible.builtin.systemd_service:
+    name: "{{app_user}}" 
+    state: restarted
+    enabled: true
+    daemon_reload: true
