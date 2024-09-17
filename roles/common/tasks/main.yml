@@ -6,3 +6,9 @@
     name: prometheus                     # Name of the role to be called 
     tasks_from: node-exporter             # Name of the task in the above mentioned role 
   
+- name: Configuring Nginx Exporter      # Should only run for frontend as nginx is running on frontend
+  ansible.builtin.include_role:      
+    name: prometheus                    
+    tasks_from: nginx-exporter     
+  when: nginx_exporter
+  

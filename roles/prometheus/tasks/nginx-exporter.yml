@@ -1,0 +1,7 @@
+- name: Downloading Nginx Exporter  
+  ansible.builtin.unarchive:
+    src: https://github.com/nginxinc/nginx-prometheus-exporter/releases/download/v1.3.0/nginx-prometheus-exporter_1.3.0_linux_amd64.tar.gz
+    dest: /opt
+    remote_src: yes
+    owner: "{{app_user}}" 
+    group: "{{app_user}}" 
