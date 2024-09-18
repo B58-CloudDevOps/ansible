@@ -7,8 +7,8 @@
     group: "{{app_user}}" 
 
 - name: Copying Grok Config file 
-  ansible.builtin.copy:
-    src: sample.yml
+  ansible.builtin.file:
+    src: config.yml
     dest: /opt/grok_exporter-0.2.8.linux-amd64/config.yml
     state: "hard"
 
