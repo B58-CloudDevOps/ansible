@@ -12,7 +12,7 @@
     dest: /opt/grok_exporter-0.2.8.linux-amd64/config.yml
 
 - name: Copying Grok Systemd file 
-  ansible.builtin.template:
+  ansible.builtin.file:
     src: grok-exporter.service
     dest: /etc/systemd/system/grok-exporter.service
 
