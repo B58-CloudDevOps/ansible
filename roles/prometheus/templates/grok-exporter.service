@@ -1,0 +1,11 @@
+[Unit]
+Description = Grok Exporter Service
+
+[Service]
+User=root
+WorkingDirectory=/opt/grok_exporter-0.2.8.linux-amd64/
+ExecStart=/opt/grok_exporter-0.2.8.linux-amd64/grok_exporter -config ./config.yml
+SyslogIdentifier=prometheus
+
+[Install]
+WantedBy=multi-user.target

@@ -8,6 +8,11 @@
     src: proxy.conf
     dest: /etc/nginx/default.d/expense.conf  
 
+- name: Copying Nginx Config
+  ansible.builtin.template:
+    src: nginx.conf
+    dest: /etc/nginx/nginx.conf
+
 - name: App Prequisite Tasks
   ansible.builtin.include_role:      # Through this we can all a specific task from a role
     name: common                     # Name of the role to be called 

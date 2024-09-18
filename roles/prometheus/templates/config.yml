@@ -1,0 +1,18 @@
+global:
+    config_version: 2
+input:
+    type: file
+    path: /var/log/nginx/access.log
+    readall: true
+grok:
+    patterns_dir: ./patterns
+metrics:
+    - type: counter
+      name: response_time
+      help: Total number of rejected recipients, partitioned by error message.
+      match: '%{IP:client_ip}%{SPACE}%{HTTPDATE:date}%{WORD:http_method}%{SPACE}%{PATH:http}%{SPACE}%{WORD}/%{NUMBER:http_version}%{SPACE}%{NUMBER:http_code}%{SPACE}%{NUMBER:http_bytes_sent}%{SPACE}%{URI}%{SPACE}%{NUMBER:response_time}'
+      labels:
+        response_time: '{{.response_time}}'
+server:
+    host: 0.0.0.0
+    port: 9144

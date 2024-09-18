@@ -257,3 +257,24 @@ If you experience disk space issue post gocd installation, follow the instructio
         # lvextend -r -L +6G /dev/mapper/RootVG-homeVol
 
     
+# Ref: https://labs.consol.de/monitoring/2016/07/31/Prometheus-Logfile-Monitoring.html
+This post shows how to use grok_exporter to extract metrics from log files and make them available to the Prometheus monitoring toolkit.
+
+Grok Exporter: https://github.com/fstab/grok_exporter
+GROK Expressions, helps in converting unstructured logs to structued and this helps in querying the needed metris.
+
+
+log_format  main  '$remote_addr - $remote_user [$time_local] "$request" '
+                      '$status $body_bytes_sent "$http_referer" '
+                      '"$http_user_agent" "$http_x_forwarded_for"';
+
+73.207.68.229 - - [18/Sep/2024:00:52:37 +0000] "GET /api/transaction HTTP/1.1" 200 102 "http://3.89.221.213/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36" "-"
+
+
+$remote_addr $time_local $request $status $body_bytes_sent $http_referer $request_time 
+73.207.68.229 18/Sep/2024:01:01:14 +0000 GET /api/transaction HTTP/1.1 200 151 http://3.89.221.213/ 0.006
+
+Grok Expression: %{IP:client_ip}%{SPACE}%{HTTPDATE:date}%{WORD:http_method}%{SPACE}%{PATH:http}%{SPACE}%{WORD}/%{NUMBER:http_version}%{SPACE}%{NUMBER:http_code}%{SPACE}%{NUMBER:http_bytes_sent}%{SPACE}%{URI}%{SPACE}%{NUMBER:response_time}
+
+Grok Patterns:
+https://github.com/cjslack/grok-debugger/blob/master/public/patterns/grok-patterns
