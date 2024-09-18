@@ -10,6 +10,7 @@
   ansible.builtin.file:
     src: config.yml
     dest: /opt/grok_exporter-0.2.8.linux-amd64/config.yml
+    state: "file"
 
 - name: Copying Grok Systemd file 
   ansible.builtin.template:
