@@ -24,3 +24,11 @@
     state: restarted
     enabled: true
     daemon_reload: true
+
+- name: Changing the p
+  ansible.builtin.file:
+    path: /var/log/nginx
+    recurse: yes
+    owner: root
+    group: root
+    mode: '0775'
