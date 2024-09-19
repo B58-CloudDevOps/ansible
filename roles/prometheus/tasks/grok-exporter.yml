@@ -3,8 +3,8 @@
     src: https://github.com/fstab/grok_exporter/releases/download/v0.2.8/grok_exporter-0.2.8.linux-amd64.zip
     dest: /opt
     remote_src: yes
-    owner: "{{app_user}}" 
-    group: "{{app_user}}" 
+    owner: prometheus
+    group: prometheus
 
 - name: Copying Grok Config file 
   ansible.builtin.copy:

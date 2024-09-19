@@ -9,16 +9,15 @@ grok:
 metrics:
     - type: counter
       name: response_time
-      help: response_time
+      help: response time
       match: '%{IP:client_ip}%{SPACE}%{HTTPDATE:date}%{WORD:http_method}%{SPACE}%{PATH:http}%{SPACE}%{WORD}/%{NUMBER:http_version}%{SPACE}%{NUMBER:http_code}%{SPACE}%{NUMBER:http_bytes_sent}%{SPACE}%{URI}%{SPACE}%{NUMBER:response_time}'
       labels:
         response_time: '{{.response_time}}'
     - type: counter
       name: http_code
-      help: http_code
+      help: http code
       match: '%{IP:client_ip}%{SPACE}%{HTTPDATE:date}%{WORD:http_method}%{SPACE}%{PATH:http}%{SPACE}%{WORD}/%{NUMBER:http_version}%{SPACE}%{NUMBER:http_code}%{SPACE}%{NUMBER:http_bytes_sent}%{SPACE}%{URI}%{SPACE}%{NUMBER:response_time}'
       labels:
-        response_time: '{{.http_code}}'
+        http_code: '{{.http_code}}'
 server:
-    host: 0.0.0.0
     port: 9144
