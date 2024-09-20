@@ -7,17 +7,18 @@ input:
 grok:
     patterns_dir: ./patterns
 metrics:
-    - type: counter
+    - type: gauge
       name: response_time
-      help: response time
-      match: '%{IP:client_ip}%{SPACE}%{HTTPDATE:date}%{WORD:http_method}%{SPACE}%{PATH:http}%{SPACE}%{WORD}/%{NUMBER:http_version}%{SPACE}%{NUMBER:http_code}%{SPACE}%{NUMBER:http_bytes_sent}%{SPACE}%{URI}%{SPACE}%{NUMBER:response_time}'
+      help: Response Time
+      value: '{{.response_time}}'
+      match: '%{IP:client_ip}%{SPACE}%{HTTPDATE:time}%{SPACE}%{WORD:http_method}%{SPACE}%{PATH:http_path}%{SPACE}%{WORD}/%{NUMBER:http_version}%{SPACE}%{NUMBER:response_code}%{SPACE}%{NUMBER:body_size_sent}%{SPACE}%{URI}%{SPACE}%{NUMBER:response_time}'
       labels:
-        response_time: '{{.response_time}}'
+          http_path: '{{.http_path}}'
     - type: counter
-      name: http_code
-      help: http code
-      match: '%{IP:client_ip}%{SPACE}%{HTTPDATE:date}%{WORD:http_method}%{SPACE}%{PATH:http}%{SPACE}%{WORD}/%{NUMBER:http_version}%{SPACE}%{NUMBER:http_code}%{SPACE}%{NUMBER:http_bytes_sent}%{SPACE}%{URI}%{SPACE}%{NUMBER:response_time}'
+      name: response_code
+      help: Response Codes
+      match: '%{IP:client_ip}%{SPACE}%{HTTPDATE:time}%{SPACE}%{WORD:http_method}%{SPACE}%{PATH:http_path}%{SPACE}%{WORD}/%{NUMBER:http_version}%{SPACE}%{NUMBER:response_code}%{SPACE}%{NUMBER:body_size_sent}%{SPACE}%{URI}%{SPACE}%{NUMBER:response_time}'
       labels:
-        http_code: '{{.http_code}}'
+          response_code: '{{.response_code}}'
 server:
     port: 9144
