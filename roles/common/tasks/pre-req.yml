@@ -7,6 +7,8 @@
   ansible.builtin.file:
     path: "{{APP_PATH}}"
     state: directory
+    owner: expense
+    group: expense
 
 - name: Download & Extracting {{COMPONENT}}
   ansible.builtin.unarchive:
