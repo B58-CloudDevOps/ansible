@@ -7,11 +7,13 @@
   ansible.builtin.file:
     path: "{{APP_PATH}}"
     state: directory
-    owner: expense
-    group: expense
+    owner: "{{app_user}}"
+    group: "{{app_user}}"
 
 - name: Download & Extracting {{COMPONENT}}
   ansible.builtin.unarchive:
     src: https://expense-web-app.s3.amazonaws.com/{{COMPONENT}}.zip
     dest: "{{APP_PATH}}"
     remote_src: yes    
+    owner: "{{app_user}}"
+    group: "{{app_user}}"

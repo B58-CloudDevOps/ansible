@@ -11,7 +11,7 @@
 
 - name: Adding app user expense 
   ansible.builtin.user:
-    name: expense
+    name: "{{app_user}}"
     comment: Application User 
 
 - name: App Prequisite Tasks
@@ -22,6 +22,7 @@
 - name: Generating node_modules
   community.general.npm:
     path: "{{APP_PATH}}"
+  become_user: "{{app_user}}"
 
 - name: Install MySQL Client
   ansible.builtin.dnf:
