@@ -2,4 +2,3 @@ APP_PATH: "/usr/share/nginx/html"
 COMPONENT: "frontend"
 nginx_exporter: true
 app_user: root
-install_filebeat: true
