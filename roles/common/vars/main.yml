@@ -1,2 +1,3 @@
 nginx_exporter: false
 grok_exporter: false
+install_filebeat: false
