@@ -56,6 +56,18 @@
     src: systemd.service
     dest: /etc/systemd/system/{{COMPONENT}}.service
 
+- name: Copying Rsyslog file 
+  ansible.builtin.template:
+    src: backend.conf
+    dest: /etc/rsyslog.d/backend.conf 
+
+- name: Restarting {{COMPONENT}} on {{ENV}}
+  ansible.builtin.systemd_service:
+    name: rsyslog
+    state: restarted
+    enabled: true
+    daemon_reload: true
+
 - name: Restarting {{COMPONENT}} on {{ENV}}
   ansible.builtin.systemd_service:
     name: "{{COMPONENT}}" 

@@ -2,3 +2,4 @@ COMPONENT: "backend"
 APP_PATH: "/app"
 secrets: "{{ lookup('community.hashi_vault.hashi_vault', 'secret=expense-dev/data/backend token={{vault_token}} url=https://vault.expense.internal:8200 validate_certs=False') }}"
 app_user: expense
+logfile: "/var/log/backend.log"
