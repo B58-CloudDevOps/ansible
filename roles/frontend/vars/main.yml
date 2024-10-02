@@ -1,5 +1,6 @@
 APP_PATH: "/usr/share/nginx/html" 
 COMPONENT: "frontend"
-nginx_exporter: true
+# nginx_exporter: true
+nginx_exporter: false
 app_user: root
 logfile: "/var/log/nginx/access.log"
