@@ -1,34 +1,53 @@
-- name: Install nginx
+# - name: Install nginx
+#   ansible.builtin.package:
+#     name: nginx
+#     state: present 
+
+# - name: Copying proxy file 
+#   ansible.builtin.template:
+#     src: proxy.conf
+#     dest: /etc/nginx/default.d/expense.conf  
+
+# - name: Copying Nginx Config
+#   ansible.builtin.template:
+#     src: nginx.conf
+#     dest: /etc/nginx/nginx.conf
+
+# - name: App Prequisite Tasks
+#   ansible.builtin.include_role:      # Through this we can all a specific task from a role
+#     name: common                     # Name of the role to be called 
+#     tasks_from: pre-req              # Name of the task in the above mentioned role 
+
+# - name: Restarting {{COMPONENT}}
+#   ansible.builtin.systemd_service:
+#     name: nginx 
+#     state: restarted
+#     enabled: true
+#     daemon_reload: true
+
+# - name: Changing the p
+#   ansible.builtin.file:
+#     path: /var/log/nginx
+#     recurse: yes
+#     owner: root
+#     group: root
+#     mode: '0775'
+
+
+# Docker specific 
+
+- name: Installing Docker 
   ansible.builtin.package:
-    name: nginx
-    state: present 
+    name: docker
+    state: present  
 
-- name: Copying proxy file 
-  ansible.builtin.template:
-    src: proxy.conf
-    dest: /etc/nginx/default.d/expense.conf  
-
-- name: Copying Nginx Config
-  ansible.builtin.template:
-    src: nginx.conf
-    dest: /etc/nginx/nginx.conf
-
-- name: App Prequisite Tasks
-  ansible.builtin.include_role:      # Through this we can all a specific task from a role
-    name: common                     # Name of the role to be called 
-    tasks_from: pre-req              # Name of the task in the above mentioned role 
-
-- name: Restarting {{COMPONENT}}
-  ansible.builtin.systemd_service:
-    name: nginx 
-    state: restarted
-    enabled: true
-    daemon_reload: true
-
-- name: Changing the p
-  ansible.builtin.file:
-    path: /var/log/nginx
-    recurse: yes
-    owner: root
-    group: root
-    mode: '0775'
+- name: Restart a container
+  containers.podman.podman_container:
+    name: frontend
+    image: docker.io/sanraman/expense-frontend:v001
+    state: started
+    restart: true
+    ports:
+        - "80:80"
+    env:
+        COMPONENT: "frontend"
