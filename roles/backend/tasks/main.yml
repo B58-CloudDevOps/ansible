@@ -49,21 +49,34 @@
       - python3-PyMySQL                
     state: present
 
-- name: Load Schema
-  community.mysql.mysql_db:
-    state: import
-    name: all
-    target: /app/schema/backend.sql
-    login_user: "{{secrets.MYSQL_USER}}"
-    login_password: "{{secrets.MYSQL_PASS}}"         # ensure secrets variable is supplied
-    login_host: "{{secrets.DB_HOST}}"
+# - name: Load Schema
+#   community.mysql.mysql_db:
+#     state: import
+#     name: all
+#     target: /app/schema/backend.sql
+#     login_user: "{{secrets.MYSQL_USER}}"
+#     login_password: "{{secrets.MYSQL_PASS}}"         # ensure secrets variable is supplied
+#     login_host: "{{secrets.DB_HOST}}"
 
 - name: Installing Docker 
   ansible.builtin.package:
     name: docker
     state: present  
 
-- name: Restart a container
+- name: Injecting Schema 
+  containers.podman.podman_container:
+    name: schema
+    image: docker.io/sanraman/expense-schema-loader:latest
+    state: started
+    restart: true
+    env:
+      login_user: "{{secrets.MYSQL_USER}}"
+      login_password: "{{secrets.MYSQL_PASS}}"         
+      login_host: "{{secrets.DB_HOST}}"
+      app_repo: https://github.com/expenseapp-001/expense-backend.git 
+      schema_file: /app/schema/backend.sql
+
+- name: Starting Backend Container
   containers.podman.podman_container:
     name: backend
     image: docker.io/sanraman/expense-backend:latest
