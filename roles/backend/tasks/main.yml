@@ -45,8 +45,7 @@
 - name: Installingf MySQL Client
   ansible.builtin.dnf:
     name:
-      - mysql 
-      - PyMySQL            
+      - mysql                 
       - python3-PyMySQL                
     state: present
 
