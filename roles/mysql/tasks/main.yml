@@ -1,13 +1,30 @@
-- name: Install {{COMPONENT}}
+# - name: Install {{COMPONENT}}
+#   ansible.builtin.package:
+#     name: mysql-server
+#     state: present 
+
+# - name: Starting {{COMPONENT}}
+#   ansible.builtin.systemd_service:
+#     name: mysqld 
+#     state: started
+#     enabled: true
+
+# - name: Configuring hostname 
+#   ansible.builtin.shell: mysql_secure_installation --set-root-pass {{secrets.MYSQL_PASS}}
+
+- name: Installing Docker 
   ansible.builtin.package:
-    name: mysql-server
-    state: present 
+    name: docker
+    state: present  
 
-- name: Starting {{COMPONENT}}
-  ansible.builtin.systemd_service:
-    name: mysqld 
+- name: Running MySQL container
+  containers.podman.podman_container:
+    name: mysql
+    image: docker.io/mysql:8.0
     state: started
-    enabled: true
-
-- name: Configuring hostname 
-  ansible.builtin.shell: mysql_secure_installation --set-root-pass {{secrets.MYSQL_PASS}}
+    restart: true
+    ports:
+        - "3306:3306"
+    env:
+        COMPONENT: "mysql"
+        MYSQL_ROOT_PASSWORD: "{{secrets.MYSQL_PASS}}"  
